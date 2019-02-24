@@ -1,3 +1,4 @@
+// Selectors
 var getVenueInput = function () {
     return document.querySelector("#venue-input");
 };
@@ -7,17 +8,20 @@ var getVenueList = function () {
 var getVenueButton = function () {
     return document.querySelector("#venue-button");
 };
+// Listeners
 var addButtonListener = function () {
     var venueButton = getVenueButton();
     if (venueButton)
         venueButton.addEventListener("click", handleSearch);
 };
+// Event Handlers
 var handleSearch = function (e) {
     e.preventDefault();
     var venueInput = getVenueInput();
     if (venueInput)
         fetchVenues(venueInput.value);
 };
+// Fetch
 var fetchVenues = function (venueString) {
     if (venueString.length) {
         var url = "https://api.seatgeek.com/2/venues?client_id=MTU0NDI1OTd8MTU1MDg0OTY3NS4xOQ&per_page=100&q=";

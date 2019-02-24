@@ -1,3 +1,5 @@
+// Selectors
+
 const getVenueInput = (): HTMLElement | null =>
   document.querySelector("#venue-input");
 
@@ -7,16 +9,22 @@ const getVenueList = (): HTMLElement | null =>
 const getVenueButton = (): HTMLElement | null =>
   document.querySelector("#venue-button");
 
+// Listeners
+
 const addButtonListener = (): void => {
   const venueButton: HTMLElement | null = getVenueButton();
   if (venueButton) venueButton.addEventListener("click", handleSearch);
 };
+
+// Event Handlers
 
 const handleSearch = (e: Event) => {
   e.preventDefault();
   const venueInput: HTMLElement | null = getVenueInput();
   if (venueInput) fetchVenues((<HTMLInputElement>venueInput).value);
 };
+
+// Fetch
 
 const fetchVenues = (venueString: string) => {
   if (venueString.length) {
@@ -33,6 +41,8 @@ const fetchVenues = (venueString: string) => {
       }
   }
 };
+
+// List Venues Logic
 
 interface IVenue {
   name: string;
